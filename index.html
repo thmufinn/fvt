@@ -7,7 +7,8 @@
   <title>Variable Font Inspector — Weight Picker</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .weight-row.active td { background: rgba(59,130,246,0.08); }
+    /* 선택 행은 검정색 배경(가독성을 위해 글자는 흰색) */
+    .weight-row.active td { background: #000; color: #fff; }
     .clickable { cursor: pointer; }
   </style>
 </head>
@@ -16,16 +17,16 @@
     <section class="max-w-5xl mx-auto p-8 space-y-10">
       <header class="text-center space-y-2">
         <h1 class="text-4xl font-bold">Variable Font Inspector</h1>
-        <p class="text-gray-600 text-lg">시스템에 설치된 폰트를 선택하고, 원하는 <span class="font-semibold">Value</span>를 눌러 미리보기 굵기를 바꿔보세요.</p>
+        <p class="text-gray-700 text-lg">시스템에 설치된 폰트를 선택하고, 원하는 <span class="font-semibold">Value</span>를 눌러 미리보기 굵기를 바꿔보세요.</p>
       </header>
 
       <!-- 폰트 선택 -->
-      <section class="bg-white rounded-2xl shadow-md p-6 border">
-        <h2 class="text-xl font-semibold mb-4">1️⃣ 시스템 폰트 선택</h2>
+      <section class="bg-white rounded-2xl p-6 border border-black">
+        <h2 class="text-xl font-semibold mb-4"><span class="font-bold text-black">1.</span> 시스템 폰트 선택</h2>
         <div class="grid md:grid-cols-2 gap-4">
           <div>
-            <label class="block text-sm text-gray-600 mb-1">추천 시스템 폰트</label>
-            <select id="fontSelect" class="w-full border rounded-xl p-3">
+            <label class="block text-sm text-gray-700 mb-1">추천 시스템 폰트</label>
+            <select id="fontSelect" class="w-full border border-black rounded-xl p-3">
               <option value="system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Apple SD Gothic Neo, Malgun Gothic, sans-serif">system-ui (기본)</option>
               <option value="Apple SD Gothic Neo, -apple-system, system-ui, sans-serif">Apple SD Gothic Neo (macOS)</option>
               <option value="Malgun Gothic, Segoe UI, system-ui, sans-serif">맑은 고딕 (Windows)</option>
@@ -36,54 +37,53 @@
             </select>
           </div>
           <div>
-            <label class="block text-sm text-gray-600 mb-1">직접 입력 (정확한 폰트 패밀리명)</label>
-            <input id="fontInput" class="w-full border rounded-xl p-3" placeholder="예: &quot;Noto Sans KR&quot;, &quot;Apple SD Gothic Neo&quot;" />
-            <p class="text-xs text-gray-500 mt-1">브라우저는 설치된 폰트 목록을 제공하지 않습니다. 이름을 정확히 입력하면 해당 폰트가 있으면 적용됩니다.</p>
+            <label class="block text-sm text-gray-700 mb-1">직접 입력 (정확한 폰트 패밀리명)</label>
+            <input id="fontInput" class="w-full border border-black rounded-xl p-3" placeholder="예: &quot;Noto Sans KR&quot;, &quot;Apple SD Gothic Neo&quot;" />
+            <p class="text-xs text-gray-600 mt-1">브라우저는 설치된 폰트 목록을 제공하지 않습니다. 이름을 정확히 입력하면 해당 폰트가 있으면 적용됩니다.</p>
           </div>
         </div>
       </section>
 
       <!-- Weight 표 -->
-      <section class="bg-white rounded-2xl shadow-md p-6 border">
-        <h2 class="text-xl font-semibold mb-4">2️⃣ Value(굵기) 선택</h2>
+      <section class="bg-white rounded-2xl p-6 border border-black">
+        <h2 class="text-xl font-semibold mb-4"><span class="font-bold text-black">2.</span> Value(굵기) 선택</h2>
         <p class="text-gray-700 mb-3">숫자를 클릭하면 미리보기의 굵기가 바뀝니다. (가변 폰트의 경우 <code>font-variation-settings: 'wght' n</code>도 함께 설정)</p>
-        <table class="w-full text-sm border-collapse border border-gray-200">
+        <table class="w-full text-sm border-collapse border border-black">
           <thead>
-            <tr class="bg-gray-100 text-left">
-              <th class="p-2 border border-gray-200">Value</th>
-              <th class="p-2 border border-gray-200">Description</th>
+            <tr class="text-left">
+              <th class="p-2 border border-black">Value</th>
+              <th class="p-2 border border-black">Description</th>
             </tr>
           </thead>
           <tbody id="weightTableBody">
-            <tr class="weight-row clickable" data-weight="100" tabindex="0" role="button"><td class="p-2 border">100</td><td class="p-2 border">Thin</td></tr>
-            <tr class="weight-row clickable" data-weight="200" tabindex="0" role="button"><td class="p-2 border">200</td><td class="p-2 border">Extra-light (Ultra-light)</td></tr>
-            <tr class="weight-row clickable" data-weight="300" tabindex="0" role="button"><td class="p-2 border">300</td><td class="p-2 border">Light</td></tr>
-            <tr class="weight-row clickable" data-weight="400" tabindex="0" role="button"><td class="p-2 border">400</td><td class="p-2 border">Normal (Regular)</td></tr>
-            <tr class="weight-row clickable" data-weight="500" tabindex="0" role="button"><td class="p-2 border">500</td><td class="p-2 border">Medium</td></tr>
-            <tr class="weight-row clickable" data-weight="600" tabindex="0" role="button"><td class="p-2 border">600</td><td class="p-2 border">Semi-bold (Demi-bold)</td></tr>
-            <tr class="weight-row clickable" data-weight="700" tabindex="0" role="button"><td class="p-2 border">700</td><td class="p-2 border">Bold</td></tr>
-            <tr class="weight-row clickable" data-weight="800" tabindex="0" role="button"><td class="p-2 border">800</td><td class="p-2 border">Extra-bold (Ultra-bold)</td></tr>
-            <tr class="weight-row clickable" data-weight="900" tabindex="0" role="button"><td class="p-2 border">900</td><td class="p-2 border">Black (Heavy)</td></tr>
+            <tr class="weight-row clickable" data-weight="100" tabindex="0" role="button"><td class="p-2 border border-black">100</td><td class="p-2 border border-black">Thin</td></tr>
+            <tr class="weight-row clickable" data-weight="200" tabindex="0" role="button"><td class="p-2 border border-black">200</td><td class="p-2 border border-black">Extra-light (Ultra-light)</td></tr>
+            <tr class="weight-row clickable" data-weight="300" tabindex="0" role="button"><td class="p-2 border border-black">300</td><td class="p-2 border border-black">Light</td></tr>
+            <tr class="weight-row clickable" data-weight="400" tabindex="0" role="button"><td class="p-2 border border-black">400</td><td class="p-2 border border-black">Normal (Regular)</td></tr>
+            <tr class="weight-row clickable" data-weight="500" tabindex="0" role="button"><td class="p-2 border border-black">500</td><td class="p-2 border border-black">Medium</td></tr>
+            <tr class="weight-row clickable" data-weight="600" tabindex="0" role="button"><td class="p-2 border border-black">600</td><td class="p-2 border border-black">Semi-bold (Demi-bold)</td></tr>
+            <tr class="weight-row clickable" data-weight="700" tabindex="0" role="button"><td class="p-2 border border-black">700</td><td class="p-2 border border-black">Bold</td></tr>
+            <tr class="weight-row clickable" data-weight="800" tabindex="0" role="button"><td class="p-2 border border-black">800</td><td class="p-2 border border-black">Extra-bold (Ultra-bold)</td></tr>
+            <tr class="weight-row clickable" data-weight="900" tabindex="0" role="button"><td class="p-2 border border-black">900</td><td class="p-2 border border-black">Black (Heavy)</td></tr>
           </tbody>
         </table>
-        <div class="text-sm text-gray-600 mt-3">현재 선택: <span id="currentWeight">400</span></div>
+        <div class="text-sm text-gray-800 mt-3">현재 선택: <span id="currentWeight">400</span></div>
       </section>
 
       <!-- 미리보기 -->
-      <section class="bg-white rounded-2xl shadow-md p-6 border">
-        <h2 class="text-xl font-semibold mb-4">3️⃣ Preview</h2>
-        <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
+      <section class="bg-white rounded-2xl p-6 border border-black">
+        <h2 class="text-xl font-semibold mb-4"><span class="font-bold text-black">3.</span> Preview</h2>
+        <div class="flex items-center gap-2 text-sm text-gray-800 mb-2">
           <span class="opacity-70">CSS</span>
-          <code class="bg-gray-100 rounded px-2 py-1 text-xs" id="cssCode">font-weight: 400; font-variation-settings: 'wght' 400;</code>
+          <code class="bg-gray-100 rounded px-2 py-1 text-xs border border-black" id="cssCode">font-weight: 400; font-variation-settings: 'wght' 400;</code>
         </div>
-        <textarea id="sampleInput" class="w-full border rounded-xl p-3 text-sm mb-3" rows="3">다람쥐 헌 쳇바퀴에 타고파
-The quick brown fox jumps over the lazy dog 1234567890</textarea>
-        <div id="preview" class="p-6 border rounded-xl text-center text-2xl bg-gray-50">
-          다람쥐 헌 쳇바퀴에 타고파<br/>The quick brown fox jumps over the lazy dog 1234567890
+        <textarea id="sampleInput" class="w-full border border-black rounded-xl p-3 text-sm mb-3" rows="3">가나다라마바사라자차카타파하 1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz</textarea>
+        <div id="preview" class="p-6 border border-black rounded-xl text-center text-2xl bg-white">
+          가나다라마바사라자차카타파하 1234567890<br/>ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
         </div>
       </section>
 
-      <footer class="text-center text-sm text-gray-500 pt-10">
+      <footer class="text-center text-sm text-gray-700 pt-10">
         ⚠️ 브라우저는 보안/개인정보 보호를 위해 <strong>설치된 폰트의 목록을 제공하지 않습니다.</strong> 위 드롭다운은 흔히 쓰는 폰트의 예시이며, 직접 입력란에 정확한 이름을 넣으면 설치되어 있을 경우 적용됩니다.
       </footer>
     </section>
@@ -105,20 +105,16 @@ The quick brown fox jumps over the lazy dog 1234567890</textarea>
 
     function applyWeight(w) {
       const weight = Math.max(100, Math.min(900, parseInt(w, 10) || 400));
-      // 표에서 활성 행 강조
       document.querySelectorAll('.weight-row').forEach(tr => tr.classList.remove('active'));
       const active = document.querySelector(`.weight-row[data-weight="${weight}"]`);
       if (active) active.classList.add('active');
 
-      // 스타일 적용: 일반 font-weight + 가변 폰트용 font-variation-settings
       preview.style.fontWeight = weight;
       preview.style.fontVariationSettings = `'wght' ${weight}`;
-
       currentWeight.textContent = String(weight);
       cssCode.textContent = `font-weight: ${weight}; font-variation-settings: 'wght' ${weight};`;
     }
 
-    // 이벤트 바인딩
     fontSelect.addEventListener('change', applyFontFamily);
     fontInput.addEventListener('input', applyFontFamily);
     sampleInput.addEventListener('input', () => {
@@ -141,7 +137,6 @@ The quick brown fox jumps over the lazy dog 1234567890</textarea>
       }
     });
 
-    // 초기 상태 적용
     applyFontFamily();
     applyWeight(400);
   </script>
