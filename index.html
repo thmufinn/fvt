@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Variable Font Inspector</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-white to-gray-50 text-gray-900">
+  <main class="min-h-screen">
+    <section class="max-w-5xl mx-auto p-8 space-y-10">
+      <header class="text-center space-y-2">
+        <h1 class="text-4xl font-bold">Variable Font Inspector</h1>
+        <p class="text-gray-600 text-lg">Upload your font and inspect axes, metrics, and coverage — all in your browser.</p>
+      </header>
+
+      <section class="bg-white rounded-2xl shadow-md p-6 border">
+        <h2 class="text-xl font-semibold mb-4">1️⃣ Upload a Font</h2>
+        <p class="text-gray-700 mb-4">Supports TTF / OTF / WOFF / WOFF2. No data ever leaves your browser.</p>
+        <div class="border-2 border-dashed border-gray-300 rounded-xl p-10 text-center hover:bg-gray-50">
+          <p class="text-gray-500">Drag and drop a font file here<br/>or click to select.</p>
+        </div>
+      </section>
+
+      <section class="bg-white rounded-2xl shadow-md p-6 border">
+        <h2 class="text-xl font-semibold mb-4">2️⃣ Axis Controls &amp; Weight Mapping</h2>
+        <p class="text-gray-700 mb-2">Adjust variable axes and see CSS settings update in real time.</p>
+        <table class="w-full text-sm border-collapse border border-gray-200">
+          <thead>
+            <tr class="bg-gray-100 text-left">
+              <th class="p-2 border border-gray-200">Value</th>
+              <th class="p-2 border border-gray-200">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="p-2 border">100</td><td class="p-2 border">Thin</td></tr>
+            <tr><td class="p-2 border">200</td><td class="p-2 border">Extra-light (Ultra-light)</td></tr>
+            <tr><td class="p-2 border">300</td><td class="p-2 border">Light</td></tr>
+            <tr><td class="p-2 border">400</td><td class="p-2 border">Normal (Regular)</td></tr>
+            <tr><td class="p-2 border">500</td><td class="p-2 border">Medium</td></tr>
+            <tr><td class="p-2 border">600</td><td class="p-2 border">Semi-bold (Demi-bold)</td></tr>
+            <tr><td class="p-2 border">700</td><td class="p-2 border">Bold</td></tr>
+            <tr><td class="p-2 border">800</td><td class="p-2 border">Extra-bold (Ultra-bold)</td></tr>
+            <tr><td class="p-2 border">900</td><td class="p-2 border">Black (Heavy)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="bg-white rounded-2xl shadow-md p-6 border">
+        <h2 class="text-xl font-semibold mb-4">3️⃣ Preview</h2>
+        <p class="text-gray-700 mb-3">Try your font with live sample text:</p>
+        <div class="p-6 border rounded-xl text-center text-2xl bg-gray-50">
+          다람쥐 헌 쳇바퀴에 타고파<br/>The quick brown fox jumps over the lazy dog 1234567890
+        </div>
+      </section>
+
+      <footer class="text-center text-sm text-gray-500 pt-10">
+        ⚠️ This is a browser-only tool. Fonts are processed locally — no uploads, no tracking.
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
